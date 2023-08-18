@@ -9,7 +9,7 @@ interface RoutesToolbarProps {
 export function RoutesToolbar({}:RoutesToolbarProps){
 return (
   <nav className="flex flex-col md:flex-row items-center  gap-3">
-    <Link to="/">
+    <Link to="/" className="p-2">
       Home
     </Link>
     <Link to="/posts" >
@@ -19,10 +19,7 @@ return (
     <Link to="/profile" >
       profile
     </Link>
-    <Link to="/admin" >
-      admin
-    </Link>
-    <ThemeToggle/>
-  </nav>
+
+    </nav>
 );
 }
