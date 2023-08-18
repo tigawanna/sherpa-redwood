@@ -1,21 +1,15 @@
-import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
+import { WelcomeSection } from './components/welcome/Welcome'
 
-const HomePage = () => {
-  return (
-    <>
-      <MetaTags title="Home" description="Home page" />
+interface HomePageProps {
 
-      <h1>HomePage</h1>
-      <p className='text-2xl text-accent-focus'>
-        Find me in <code>./web/src/pages/HomePage/HomePage.tsx</code>
-      </p>
-      <p>
-        My default route is named <code>home</code>, link to me with `
-        <Link to={routes.home()}>Home</Link>`
-      </p>
-    </>
-  )
 }
 
-export default HomePage
+export default function HomePage({}:HomePageProps){
+return (
+  <div className="w-full h-full flex items-center justify-center">
+    <MetaTags title="Home" description="Home page" />
+    <WelcomeSection />
+  </div>
+)
+}
