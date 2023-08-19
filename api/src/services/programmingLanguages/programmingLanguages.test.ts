@@ -40,9 +40,14 @@ describe('programmingLanguages', () => {
 
   scenario('creates a programmingLanguage', async () => {
     const result = await createProgrammingLanguage({
-      input: { name: 'String', color: 'String' },
+      input: {
+        updatedAt: '2023-08-19T10:23:31.715Z',
+        name: 'String',
+        color: 'String',
+      },
     })
 
+    expect(result.updatedAt).toEqual(new Date('2023-08-19T10:23:31.715Z'))
     expect(result.name).toEqual('String')
     expect(result.color).toEqual('String')
   })
@@ -55,10 +60,10 @@ describe('programmingLanguages', () => {
       })) as ProgrammingLanguage
       const result = await updateProgrammingLanguage({
         id: original.id,
-        input: { name: 'String2' },
+        input: { updatedAt: '2023-08-20T10:23:31.715Z' },
       })
 
-      expect(result.name).toEqual('String2')
+      expect(result.updatedAt).toEqual(new Date('2023-08-20T10:23:31.715Z'))
     }
   )
 

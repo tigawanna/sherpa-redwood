@@ -9,6 +9,12 @@ export const schema = gql`
     contactPhone: String!
     summary: String!
     programmingLanguages: [ProgrammingLanguage]!
+    skills: [Skill]!
+    experience: [JobExperience]!
+    education: [Education]!
+    projects: [Project]!
+    JobAppliedTo: [JobAppliedTo]!
+    UserProfile: [UserProfile]!
   }
 
   type Query {

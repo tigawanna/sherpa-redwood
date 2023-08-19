@@ -1,4 +1,8 @@
-import type { QueryResolvers, MutationResolvers } from 'types/graphql'
+import type {
+  QueryResolvers,
+  MutationResolvers,
+  UserProfileRelationResolvers,
+} from 'types/graphql'
 
 import { db } from 'src/lib/db'
 
@@ -36,4 +40,13 @@ export const deleteUserProfile: MutationResolvers['deleteUserProfile'] = ({
   return db.userProfile.delete({
     where: { id },
   })
+}
+
+export const UserProfile: UserProfileRelationResolvers = {
+  JobAppliedTo: (_obj, { root }) => {
+    return db.userProfile.findUnique({ where: { id: root?.id } }).JobAppliedTo()
+  },
+  resume: (_obj, { root }) => {
+    return db.userProfile.findUnique({ where: { id: root?.id } }).resume()
+  },
 }

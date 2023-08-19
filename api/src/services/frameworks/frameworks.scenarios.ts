@@ -3,8 +3,20 @@ import type { ScenarioData } from '@redwoodjs/testing/api'
 
 export const standard = defineScenario<Prisma.FrameworkCreateArgs>({
   framework: {
-    one: { data: { name: 'String', description: 'String' } },
-    two: { data: { name: 'String', description: 'String' } },
+    one: {
+      data: {
+        updatedAt: '2023-08-19T10:23:50.074Z',
+        name: 'String',
+        description: 'String',
+      },
+    },
+    two: {
+      data: {
+        updatedAt: '2023-08-19T10:23:50.074Z',
+        name: 'String',
+        description: 'String',
+      },
+    },
   },
 })
 

@@ -5,18 +5,40 @@ export const standard = defineScenario<Prisma.UserProfileCreateArgs>({
   userProfile: {
     one: {
       data: {
-        email: 'String1119208',
+        updatedAt: '2023-08-19T10:28:51.744Z',
+        email: 'String1846980',
         name: 'String',
         about_me: 'String',
         image_url: 'String',
+        resume: {
+          create: {
+            updatedAt: '2023-08-19T10:28:51.744Z',
+            name: 'String',
+            location: 'String',
+            contactEmail: 'String',
+            contactPhone: 'String',
+            summary: 'String',
+          },
+        },
       },
     },
     two: {
       data: {
-        email: 'String8773472',
+        updatedAt: '2023-08-19T10:28:51.744Z',
+        email: 'String4522520',
         name: 'String',
         about_me: 'String',
         image_url: 'String',
+        resume: {
+          create: {
+            updatedAt: '2023-08-19T10:28:51.744Z',
+            name: 'String',
+            location: 'String',
+            contactEmail: 'String',
+            contactPhone: 'String',
+            summary: 'String',
+          },
+        },
       },
     },
   },
