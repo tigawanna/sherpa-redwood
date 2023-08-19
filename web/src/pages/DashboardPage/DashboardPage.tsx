@@ -1,21 +1,19 @@
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
+import UserProfileCell from 'src/components/UserProfileCell'
 
-const DashboardPage = () => {
-  return (
-    <>
-      <MetaTags title="Dashboard" description="Dashboard page" />
 
-      <h1>DashboardPage</h1>
-      <p>
-        Find me in <code>./web/src/pages/DashboardPage/DashboardPage.tsx</code>
-      </p>
-      <p>
-        My default route is named <code>dashboard</code>, link to me with `
-        <Link to={routes.dashboard()}>Dashboard</Link>`
-      </p>
-    </>
-  )
+interface DashboardPageProps {
+
+}
+
+export function DashboardPage({}:DashboardPageProps){
+return (
+  <div className="w-full h-full flex items-center justify-center">
+    <MetaTags title="Dashboard" description="Dashboard page" />
+    <UserProfileCell id={1}/>
+  </div>
+)
 }
 
 export default DashboardPage
