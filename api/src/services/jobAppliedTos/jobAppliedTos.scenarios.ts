@@ -5,11 +5,11 @@ export const standard = defineScenario<Prisma.JobAppliedToCreateArgs>({
   jobAppliedTo: {
     one: {
       data: {
-        title: 'String266952',
-        updatedAt: '2023-08-19T10:22:35.883Z',
+        title: 'String226808',
+        updatedAt: '2023-08-19T11:09:43.969Z',
         resume: {
           create: {
-            updatedAt: '2023-08-19T10:22:35.883Z',
+            updatedAt: '2023-08-19T11:09:43.969Z',
             name: 'String',
             location: 'String',
             contactEmail: 'String',
@@ -21,11 +21,11 @@ export const standard = defineScenario<Prisma.JobAppliedToCreateArgs>({
     },
     two: {
       data: {
-        title: 'String7263517',
-        updatedAt: '2023-08-19T10:22:35.883Z',
+        title: 'String7612987',
+        updatedAt: '2023-08-19T11:09:43.969Z',
         resume: {
           create: {
-            updatedAt: '2023-08-19T10:22:35.884Z',
+            updatedAt: '2023-08-19T11:09:43.969Z',
             name: 'String',
             location: 'String',
             contactEmail: 'String',

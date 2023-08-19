@@ -5,7 +5,7 @@ export const standard = defineScenario<Prisma.ResumeCreateArgs>({
   resume: {
     one: {
       data: {
-        updatedAt: '2023-08-19T10:22:54.717Z',
+        updatedAt: '2023-08-19T11:10:10.542Z',
         name: 'String',
         location: 'String',
         contactEmail: 'String',
@@ -15,7 +15,7 @@ export const standard = defineScenario<Prisma.ResumeCreateArgs>({
     },
     two: {
       data: {
-        updatedAt: '2023-08-19T10:22:54.717Z',
+        updatedAt: '2023-08-19T11:10:10.542Z',
         name: 'String',
         location: 'String',
         contactEmail: 'String',

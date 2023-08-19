@@ -7,7 +7,8 @@
     ]
   },
   "scripts": {
-    "reval":" tsx ./scripts/custom/revalidate-sdls.ts"
+    "reval":" tsx ./scripts/custom/revalidate-sdls.ts",
+    "map":" tsx ./scripts/custom/multi-cmd.ts"
   },
   "devDependencies": {
     "@redwoodjs/core": "6.1.0",

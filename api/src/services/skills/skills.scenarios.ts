@@ -5,7 +5,7 @@ export const standard = defineScenario<Prisma.SkillCreateArgs>({
   skill: {
     one: {
       data: {
-        updatedAt: '2023-08-19T10:23:12.929Z',
+        updatedAt: '2023-08-19T11:10:29.996Z',
         name: 'String',
         description: 'String',
         url: 'String',
@@ -13,7 +13,7 @@ export const standard = defineScenario<Prisma.SkillCreateArgs>({
     },
     two: {
       data: {
-        updatedAt: '2023-08-19T10:23:12.929Z',
+        updatedAt: '2023-08-19T11:10:29.996Z',
         name: 'String',
         description: 'String',
         url: 'String',

@@ -5,7 +5,7 @@ export const standard = defineScenario<Prisma.ProjectCreateArgs>({
   project: {
     one: {
       data: {
-        updatedAt: '2023-08-19T10:21:18.109Z',
+        updatedAt: '2023-08-19T11:08:27.202Z',
         name: 'String',
         description: 'String',
         repoUrl: 'String',
@@ -13,7 +13,7 @@ export const standard = defineScenario<Prisma.ProjectCreateArgs>({
     },
     two: {
       data: {
-        updatedAt: '2023-08-19T10:21:18.110Z',
+        updatedAt: '2023-08-19T11:08:27.202Z',
         name: 'String',
         description: 'String',
         repoUrl: 'String',

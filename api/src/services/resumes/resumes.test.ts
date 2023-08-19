@@ -31,7 +31,7 @@ describe('resumes', () => {
   scenario('creates a resume', async () => {
     const result = await createResume({
       input: {
-        updatedAt: '2023-08-19T10:22:54.652Z',
+        updatedAt: '2023-08-19T11:10:10.467Z',
         name: 'String',
         location: 'String',
         contactEmail: 'String',
@@ -40,7 +40,7 @@ describe('resumes', () => {
       },
     })
 
-    expect(result.updatedAt).toEqual(new Date('2023-08-19T10:22:54.652Z'))
+    expect(result.updatedAt).toEqual(new Date('2023-08-19T11:10:10.467Z'))
     expect(result.name).toEqual('String')
     expect(result.location).toEqual('String')
     expect(result.contactEmail).toEqual('String')
@@ -52,10 +52,10 @@ describe('resumes', () => {
     const original = (await resume({ id: scenario.resume.one.id })) as Resume
     const result = await updateResume({
       id: original.id,
-      input: { updatedAt: '2023-08-20T10:22:54.653Z' },
+      input: { updatedAt: '2023-08-20T11:10:10.468Z' },
     })
 
-    expect(result.updatedAt).toEqual(new Date('2023-08-20T10:22:54.653Z'))
+    expect(result.updatedAt).toEqual(new Date('2023-08-20T11:10:10.468Z'))
   })
 
   scenario('deletes a resume', async (scenario: StandardScenario) => {

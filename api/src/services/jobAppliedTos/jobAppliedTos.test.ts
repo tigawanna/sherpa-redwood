@@ -34,14 +34,14 @@ describe('jobAppliedTos', () => {
   scenario('creates a jobAppliedTo', async (scenario: StandardScenario) => {
     const result = await createJobAppliedTo({
       input: {
-        title: 'String9663704',
-        updatedAt: '2023-08-19T10:22:35.813Z',
+        title: 'String4509958',
+        updatedAt: '2023-08-19T11:09:43.895Z',
         resumeId: scenario.jobAppliedTo.two.resumeId,
       },
     })
 
-    expect(result.title).toEqual('String9663704')
-    expect(result.updatedAt).toEqual(new Date('2023-08-19T10:22:35.813Z'))
+    expect(result.title).toEqual('String4509958')
+    expect(result.updatedAt).toEqual(new Date('2023-08-19T11:09:43.895Z'))
     expect(result.resumeId).toEqual(scenario.jobAppliedTo.two.resumeId)
   })
 
@@ -51,10 +51,10 @@ describe('jobAppliedTos', () => {
     })) as JobAppliedTo
     const result = await updateJobAppliedTo({
       id: original.id,
-      input: { title: 'String57593242' },
+      input: { title: 'String56996922' },
     })
 
-    expect(result.title).toEqual('String57593242')
+    expect(result.title).toEqual('String56996922')
   })
 
   scenario('deletes a jobAppliedTo', async (scenario: StandardScenario) => {

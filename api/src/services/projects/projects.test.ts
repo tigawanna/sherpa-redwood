@@ -31,14 +31,14 @@ describe('projects', () => {
   scenario('creates a project', async () => {
     const result = await createProject({
       input: {
-        updatedAt: '2023-08-19T10:21:18.039Z',
+        updatedAt: '2023-08-19T11:08:27.089Z',
         name: 'String',
         description: 'String',
         repoUrl: 'String',
       },
     })
 
-    expect(result.updatedAt).toEqual(new Date('2023-08-19T10:21:18.039Z'))
+    expect(result.updatedAt).toEqual(new Date('2023-08-19T11:08:27.089Z'))
     expect(result.name).toEqual('String')
     expect(result.description).toEqual('String')
     expect(result.repoUrl).toEqual('String')
@@ -48,10 +48,10 @@ describe('projects', () => {
     const original = (await project({ id: scenario.project.one.id })) as Project
     const result = await updateProject({
       id: original.id,
-      input: { updatedAt: '2023-08-20T10:21:18.040Z' },
+      input: { updatedAt: '2023-08-20T11:08:27.089Z' },
     })
 
-    expect(result.updatedAt).toEqual(new Date('2023-08-20T10:21:18.040Z'))
+    expect(result.updatedAt).toEqual(new Date('2023-08-20T11:08:27.089Z'))
   })
 
   scenario('deletes a project', async (scenario: StandardScenario) => {

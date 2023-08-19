@@ -34,8 +34,8 @@ describe('userProfiles', () => {
   scenario('creates a userProfile', async (scenario: StandardScenario) => {
     const result = await createUserProfile({
       input: {
-        updatedAt: '2023-08-19T10:28:51.664Z',
-        email: 'String7550677',
+        updatedAt: '2023-08-19T11:11:29.119Z',
+        email: 'String3103386',
         name: 'String',
         about_me: 'String',
         image_url: 'String',
@@ -43,8 +43,8 @@ describe('userProfiles', () => {
       },
     })
 
-    expect(result.updatedAt).toEqual(new Date('2023-08-19T10:28:51.664Z'))
-    expect(result.email).toEqual('String7550677')
+    expect(result.updatedAt).toEqual(new Date('2023-08-19T11:11:29.119Z'))
+    expect(result.email).toEqual('String3103386')
     expect(result.name).toEqual('String')
     expect(result.about_me).toEqual('String')
     expect(result.image_url).toEqual('String')
@@ -57,10 +57,10 @@ describe('userProfiles', () => {
     })) as UserProfile
     const result = await updateUserProfile({
       id: original.id,
-      input: { updatedAt: '2023-08-20T10:28:51.664Z' },
+      input: { updatedAt: '2023-08-20T11:11:29.119Z' },
     })
 
-    expect(result.updatedAt).toEqual(new Date('2023-08-20T10:28:51.664Z'))
+    expect(result.updatedAt).toEqual(new Date('2023-08-20T11:11:29.119Z'))
   })
 
   scenario('deletes a userProfile', async (scenario: StandardScenario) => {
