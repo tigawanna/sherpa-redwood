@@ -17,13 +17,56 @@ generator client {
 //   name  String?
 // }
 
-
-model UserProfile {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String
-  about_me   String
-  image_url String
+model Resume {
+  id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
+
+  name                  String
+  location              String
+  contactEmail          String
+  contactPhone          String
+  summary               String
+  programmingLanguages ProgrammingLanguage[]
+  // skills        String[]
+  // experience    JobExperience[]
+  // education     Education[]
+  // projects      Project[]
+
+  // Add more fields as needed
+}
+
+model ProgrammingLanguage {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  name       String
+  color      String
+  frameworks Framework[]
+  Resume     Resume?     @relation(fields: [resumeId], references: [id])
+  resumeId   Int?
+}
+
+model Framework {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  name                    String
+  description             String
+  githubUrl               String?
+  ProgrammingLanguages   ProgrammingLanguage? @relation(fields: [programmingLanguagesId], references: [id])
+  programmingLanguagesId Int?
+}
+
+model UserProfile {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  email     String   @unique
+
+  name      String
+  about_me  String
+  image_url String
 }

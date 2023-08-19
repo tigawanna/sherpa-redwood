@@ -34,14 +34,14 @@ describe('userProfiles', () => {
   scenario('creates a userProfile', async () => {
     const result = await createUserProfile({
       input: {
-        email: 'String6137728',
+        email: 'String7109916',
         name: 'String',
         about_me: 'String',
         image_url: 'String',
       },
     })
 
-    expect(result.email).toEqual('String6137728')
+    expect(result.email).toEqual('String7109916')
     expect(result.name).toEqual('String')
     expect(result.about_me).toEqual('String')
     expect(result.image_url).toEqual('String')
@@ -53,10 +53,10 @@ describe('userProfiles', () => {
     })) as UserProfile
     const result = await updateUserProfile({
       id: original.id,
-      input: { email: 'String37336392' },
+      input: { email: 'String18159682' },
     })
 
-    expect(result.email).toEqual('String37336392')
+    expect(result.email).toEqual('String18159682')
   })
 
   scenario('deletes a userProfile', async (scenario: StandardScenario) => {

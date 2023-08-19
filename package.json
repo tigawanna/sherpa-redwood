@@ -6,8 +6,12 @@
       "web"
     ]
   },
+  "scripts": {
+    "reval":" tsx ./scripts/custom/revalidate-sdls.ts"
+  },
   "devDependencies": {
-    "@redwoodjs/core": "6.1.0"
+    "@redwoodjs/core": "6.1.0",
+    "tsx": "^3.12.7"
   },
   "eslintConfig": {
     "extends": "@redwoodjs/eslint-config",

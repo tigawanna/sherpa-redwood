@@ -1,12 +1,12 @@
 export const schema = gql`
   type UserProfile {
     id: Int!
+    createdAt: DateTime!
+    updatedAt: DateTime!
     email: String!
     name: String!
     about_me: String!
     image_url: String!
-    createdAt: DateTime!
-    updatedAt: DateTime!
   }
 
   type Query {
