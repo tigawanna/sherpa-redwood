@@ -11,8 +11,116 @@ generator client {
 // Define your own datamodels here and run `yarn redwood prisma migrate dev`
 // to create migrations for them and apply to your dev DB.
 // TODO: Please remove the following example:
-model UserExample {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+// model UserExample {
+//   id    Int     @id @default(autoincrement())
+//   email String  @unique
+//   name  String?
+// }
+
+model JobSeekerResume {
+  id        Int    @id @default(autoincrement())
+  firstName String
+  lastName  String
+  email     String
+  phone     String
+  address   String
+  // Add more fields as needed
+
+  // Relationships
+  experiences JobSeekerExperience[]
+  education   JobSeekerEducation[]
+  JobApliedTo JobApliedTo[]
+  skills      Skill[]
+}
+
+model JobSeekerExperience {
+  id          Int       @id @default(autoincrement())
+  title       String
+  company     String
+  startDate   DateTime
+  endDate     DateTime?
+  description String?
+  // Add more fields as needed
+
+  // Relationships
+  resume   JobSeekerResume @relation(fields: [resumeId], references: [id])
+  resumeId Int
+}
+
+model JobSeekerEducation {
+  id        Int       @id @default(autoincrement())
+  school    String
+  degree    String
+  startDate DateTime
+  endDate   DateTime?
+  // Add more fields as needed
+
+  // Relationships
+  resume   JobSeekerResume @relation(fields: [resumeId], references: [id])
+  resumeId Int
+}
+
+model JobApliedTo {
+  id            Int             @id @default(autoincrement())
+  title         String          @unique
+  description   String?
+  company       String?
+  location      String?
+  url           String?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  // resume
+  resume        JobSeekerResume @relation(fields: [resumeId], references: [id])
+  resumeId      Int
+  // userprofile
+  UserProfile   UserProfile?    @relation(fields: [userProfileId], references: [id])
+  userProfileId Int?
+}
+
+model ProgramingLanguages {
+  id            Int          @id @default(autoincrement())
+  name          String       @unique
+  icon          String?
+  color         String?
+  //  ser profile
+  userProfileId Int?
+  UserProfile   UserProfile? @relation(fields: [userProfileId], references: [id])
+  createdAt     DateTime     @default(now())
+
+  updatedAt DateTime @updatedAt
+}
+
+model Skill {
+  id            Int          @id @default(autoincrement())
+  name          String       @unique
+  desciotion    String?
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+
+  //  skills Id
+  userProfileId Int?
+  UserProfile   UserProfile? @relation(fields: [userProfileId], references: [id])
+//  resume
+  resumeId Int?
+  resume   JobSeekerResume? @relation(fields: [resumeId], references: [id])
+}
+
+model UserProfile {
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
+  name     String?
+  avatar   String?
+  bio      String?
+  location String?
+
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+
+  website             String?
+  github              String?
+  twitter             String?
+  linkedin            String?
+  programingLanguages ProgramingLanguages[]
+  jobApliedTo         JobApliedTo[]
+  Skill               Skill[]
 }
