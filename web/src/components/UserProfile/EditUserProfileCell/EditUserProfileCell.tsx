@@ -35,6 +35,7 @@ const UPDATE_USER_PROFILE_MUTATION = gql`
       about_me
       image_url
       resumeId
+      
     }
   }
 `

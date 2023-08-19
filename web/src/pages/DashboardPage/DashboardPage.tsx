@@ -1,6 +1,6 @@
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
-import UserProfileCell from 'src/components/UserProfileCell'
+import UserProfileCell from 'src/components/UserProfile/UserProfileCell'
 
 
 interface DashboardPageProps {
