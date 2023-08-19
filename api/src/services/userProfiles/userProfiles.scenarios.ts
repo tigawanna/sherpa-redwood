@@ -5,14 +5,14 @@ export const standard = defineScenario<Prisma.UserProfileCreateArgs>({
   userProfile: {
     one: {
       data: {
-        updatedAt: '2023-08-19T11:11:29.199Z',
-        email: 'String4190190',
+        updatedAt: '2023-08-19T13:18:05.908Z',
+        email: 'String2243612',
         name: 'String',
         about_me: 'String',
         image_url: 'String',
         resume: {
           create: {
-            updatedAt: '2023-08-19T11:11:29.199Z',
+            updatedAt: '2023-08-19T13:18:05.908Z',
             name: 'String',
             location: 'String',
             contactEmail: 'String',
@@ -24,14 +24,14 @@ export const standard = defineScenario<Prisma.UserProfileCreateArgs>({
     },
     two: {
       data: {
-        updatedAt: '2023-08-19T11:11:29.199Z',
-        email: 'String928343',
+        updatedAt: '2023-08-19T13:18:05.908Z',
+        email: 'String4917590',
         name: 'String',
         about_me: 'String',
         image_url: 'String',
         resume: {
           create: {
-            updatedAt: '2023-08-19T11:11:29.199Z',
+            updatedAt: '2023-08-19T13:18:05.908Z',
             name: 'String',
             location: 'String',
             contactEmail: 'String',

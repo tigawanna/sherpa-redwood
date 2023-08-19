@@ -8,11 +8,19 @@
 // 'src/pages/Admin/BooksPage/BooksPage.js' -> AdminBooksPage
 
 import { Router, Route, Set } from '@redwoodjs/router'
+
+import ScaffoldLayout from 'src/layouts/ScaffoldLayout'
 import DashboardLayout from './layouts/DashboardLayout/DashboardLayout'
 
 const Routes = () => {
   return (
     <Router>
+      <Set wrap={ScaffoldLayout} title="UserProfiles" titleTo="userProfiles" buttonLabel="New UserProfile" buttonTo="newUserProfile">
+        <Route path="/user-profiles/new" page={UserProfileNewUserProfilePage} name="newUserProfile" />
+        <Route path="/user-profiles/{id:Int}/edit" page={UserProfileEditUserProfilePage} name="editUserProfile" />
+        <Route path="/user-profiles/{id:Int}" page={UserProfileUserProfilePage} name="userProfile" />
+        <Route path="/user-profiles" page={UserProfileUserProfilesPage} name="userProfiles" />
+      </Set>
       <Route path="/" page={HomePage} name="home" />
       <Set path="/dashboard" wrap={DashboardLayout} name="root" >
       <Route path="/dashboard" page={DashboardPage} name="dashboard" />
