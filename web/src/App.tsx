@@ -8,6 +8,7 @@ import { AuthProvider, useAuth } from './auth'
 
 import './index.css'
 import './scaffold.css'
+import { ToastContainer } from 'react-toastify'
 
 const App = () => (
   <FatalErrorBoundary page={FatalErrorPage}>
@@ -15,6 +16,18 @@ const App = () => (
       <AuthProvider>
         <RedwoodApolloProvider useAuth={useAuth}>
           <Routes />
+          <ToastContainer
+            position="bottom-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+          />
         </RedwoodApolloProvider>
       </AuthProvider>
     </RedwoodProvider>

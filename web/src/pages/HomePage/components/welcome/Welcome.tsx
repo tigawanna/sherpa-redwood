@@ -1,3 +1,4 @@
+import { Link } from "@redwoodjs/router";
 import { Features } from "./Features";
 
 interface WelcomePageProps {}
@@ -6,13 +7,27 @@ export function WelcomeSection({}: WelcomePageProps) {
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content text-center">
+        <div className="absolute top-5 right-10">
+          <button className="btn btn-secondary-focus ">Login</button>
+        </div>
         <div className="min-h-[200px] flex flex-col justify-evenly items-center gap-5">
           <h1 className="text-5xl font-bold">Welcome To Sherpa</h1>
-          <p className="text-2xl text-accent ">Your smart job application assistant</p>
+          <p className="text-2xl text-accent ">
+            Your smart job application assistant
+          </p>
           <Features />
-          <button className="btn btn-secondary-focus">Get Started</button>
+
+          <div className="flex  gap-2">
+          <Link
+          to="/dashboard"
+          className="btn btn-secondary-focus">Get Started</Link>
+          <Link
+          to="/login"
+          className="btn btn-secondary-focus">Or login to continue</Link>
+          </div>
+
         </div>
       </div>
     </div>
-  );
+  )
 }
