@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useAuth } from "src/auth"
-import {Redirect, back, navigate, routes} from '@redwoodjs/router'
+import {Redirect,routes} from '@redwoodjs/router'
 
 type AuthLayoutProps = {
   children?: React.ReactNode
