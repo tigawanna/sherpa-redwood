@@ -25,7 +25,6 @@ export function SigninForm({}: SigninFormProps) {
 
   function submitForm(data: TFormValues) {
     logIn({
-      authMethod: 'password',
       email: data.email,
       password: data.password,
     })

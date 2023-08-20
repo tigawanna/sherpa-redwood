@@ -4721,6 +4721,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@redwoodjs/auth-custom-setup@npm:6.1.0":
+  version: 6.1.0
+  resolution: "@redwoodjs/auth-custom-setup@npm:6.1.0"
+  dependencies:
+    "@babel/runtime-corejs3": 7.22.10
+    "@redwoodjs/cli-helpers": 6.1.0
+    core-js: 3.32.0
+  checksum: 2ef70f514af05b84d6bf65356dfe64faa3b4b371f3ffdea2933189158645305c624b6d20ae5f7f7e4b050f54fc51fbb4da51aaf20009ed2005aa575a45fd440c
+  languageName: node
+  linkType: hard
+
 "@redwoodjs/auth-supabase-api@npm:6.1.0":
   version: 6.1.0
   resolution: "@redwoodjs/auth-supabase-api@npm:6.1.0"
@@ -18753,6 +18764,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
+    "@redwoodjs/auth-custom-setup": 6.1.0
     "@redwoodjs/auth-supabase-setup": 6.1.0
     "@redwoodjs/core": 6.1.0
     pocketbase: ^0.16.0
@@ -21464,6 +21476,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "web@workspace:web"
   dependencies:
+    "@redwoodjs/auth": 6.1.0
     "@redwoodjs/auth-supabase-web": 6.1.0
     "@redwoodjs/forms": 6.1.0
     "@redwoodjs/router": 6.1.0

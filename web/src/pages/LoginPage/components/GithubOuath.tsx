@@ -6,7 +6,7 @@ import { useAuth } from 'src/auth'
 interface GithubOauthProps {}
 
 export function GithubOauth({}: GithubOauthProps) {
-const { logIn,loading,error } = useAuth()
+const { ,loading,error } = useAuth()
 
 
 

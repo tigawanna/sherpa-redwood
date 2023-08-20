@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { toast } from 'react-toastify'
 import { useForm } from 'react-hook-form'
 import { SocialLogin } from './SocialLogin'
-import { useAuth } from 'src/auth'
+import { PBUserAuthFields, useAuth } from 'src/auth'
 import { Link } from '@redwoodjs/router'
 import { LuLoader } from 'react-icons/lu'
 
@@ -11,13 +11,13 @@ interface SignupFormProps {}
 
 export function SignupForm({}: SignupFormProps) {
   const { signUp, loading, error } = useAuth()
-  const defaultValues = {
+  const defaultValues:PBUserAuthFields = {
     email: '',
     password: '',
-    confirmPassword: '',
-    avatar_url: '',
-    name: '',
-
+    passwordConfirm: '',
+    bio: "",
+    username: '',
+    emailVisibility: true
   }
   type TFormValues = typeof defaultValues
   const {
@@ -29,17 +29,8 @@ export function SignupForm({}: SignupFormProps) {
   const [showPassword, setShowPassword] = useState(false)
 
 
-  function submitForm({avatar_url,email,name,password}: TFormValues) {
-  signUp({
-  email,
-  password,
-  options: {
-    data: {
-      name,
-      avatar_url
-    },
-  },
-})
+  function submitForm(data: TFormValues) {
+  signUp(data)
   .then(() => {
     toast('Account created successfully', {
       type: 'success',
@@ -74,6 +65,26 @@ export function SignupForm({}: SignupFormProps) {
               className="input input-sm border border-accent"
             />
           </div>
+
+          <div className="w-full flex flex-col gap-2">
+            {/* confirm password */}
+            <div className="w-full flex flex-col items- gap-1">
+              <label htmlFor="usernase" className="text-sm">
+                username
+              </label>
+              <input
+                id="username"
+                {...register('username', {
+                  required: true,
+                })}
+                aria-invalid={errors.passwordConfirm ? 'true' : 'false'}
+                name="username"
+                placeholder="userna,e"
+                className="input input-sm border border-accent"
+              />
+            </div>
+          </div>
+
           <div className="w-full flex flex-col gap-1">
             {/* password */}
             <div className="w-full flex flex-col items- gap-1">
@@ -94,22 +105,22 @@ export function SignupForm({}: SignupFormProps) {
             <div className="w-full flex flex-col gap-2">
               {/* confirm password */}
               <div className="w-full flex flex-col items- gap-1">
-                <label htmlFor="confirm-password" className="text-sm">
+                <label htmlFor="passwordConfirm" className="text-sm">
                   confirm password
                 </label>
                 <input
-                  id="confirmPassword"
-                  {...register('confirmPassword', {
+                  id="passwordConfirm"
+                  {...register('passwordConfirm', {
                     validate: (value) => value === watch('password'),
                     required: true,
                   })}
-                  aria-invalid={errors.confirmPassword ? 'true' : 'false'}
-                  name="confirmPassword"
+                  aria-invalid={errors.passwordConfirm ? 'true' : 'false'}
+                  name="passwordConfirm"
                   type={showPassword ? 'text' : 'password'}
                   placeholder="confirm password"
                   className="input input-sm border border-accent"
                 />
-                {errors.confirmPassword && (
+                {errors.passwordConfirm && (
                   <p className="text-error text-xs">
                     {'Passwords do not match'}
                   </p>
