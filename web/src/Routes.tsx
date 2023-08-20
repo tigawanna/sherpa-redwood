@@ -27,13 +27,13 @@ const Routes = () => {
           <Route path="/user-profiles/{id:Int}" page={UserProfileUserProfilePage} name="userProfile" />
           <Route path="/user-profiles" page={UserProfileUserProfilesPage} name="userProfiles" />
         </Set>
-        <Set path="/dashboard" wrap={DashboardLayout} name="root">
+        <Set path="/dashboard" wrap={DashboardLayout} name="root" unauthenticated="home">
           <Route path="/dashboard" page={DashboardPage} name="dashboard" />
         </Set>
       </Private>
 
-      <Set  wrap={AuthLayout} >
-       <Route path="/login" page={LoginPage} name="login" />
+      <Set wrap={AuthLayout}>
+        <Route path="/login" page={LoginPage} name="login" whileLoadingPage={() => <>loading ..</>} />
       </Set>
 
       <Route notfound page={NotFoundPage} />

@@ -1,7 +1,6 @@
 import { toast } from '@redwoodjs/web/dist/toast'
 import { FaGithub } from 'react-icons/fa'
 import { LuLoader } from 'react-icons/lu'
-
 import { useAuth } from 'src/auth'
 
 interface GithubOauthProps {}

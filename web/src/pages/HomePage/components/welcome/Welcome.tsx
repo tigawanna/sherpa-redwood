@@ -8,7 +8,8 @@ export function WelcomeSection({}: WelcomePageProps) {
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content text-center">
         <div className="absolute top-5 right-10">
-          <button className="btn btn-secondary-focus ">Login</button>
+          <Link
+          to="/login" className="btn btn-secondary-focus ">Login</Link>
         </div>
         <div className="min-h-[200px] flex flex-col justify-evenly items-center gap-5">
           <h1 className="text-5xl font-bold">Welcome To Sherpa</h1>
