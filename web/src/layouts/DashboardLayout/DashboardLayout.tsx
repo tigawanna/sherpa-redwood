@@ -3,6 +3,8 @@ import { themeChange } from 'theme-change'
 import { Link } from '@redwoodjs/router'
 import { RoutesToolbar } from './components/navigation/RoutesToolbar'
 import { ThemeToggle } from './components/navigation/ThemeToggle'
+import { LuLogOut } from 'react-icons/lu'
+import { useAuth } from 'src/auth'
 
 interface DashboardLayoutProps {
   children: React.ReactNode
@@ -18,6 +20,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const toggleDrawer = () => {
     setDrawerOpen((open) => !open)
   }
+  const { logOut } = useAuth()
 
   return (
     <div className="drawer ">
@@ -30,7 +33,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       />
       <div className="drawer-content flex flex-col ">
         {/* Navbar */}
-        <div className="w-full flex items-center justify-between min-h-12 sticky top-0 ">
+        <div className="w-full flex items-center justify-between min-h-12 sticky top-0 bg-secondary/30 ">
           {/* toggle drawer icon */}
           <div className="flex-none md:hidden ">
             <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
@@ -50,20 +53,25 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             </label>
           </div>
 
-          <div className="bg-muted border-b-2 flex items-center justify-center p-1">
+          <div className="border-b-2 flex items-center justify-center p-1">
             <Link to="/" className="font-bold text-3xl  ">
               Sherpa
             </Link>
           </div>
           <div className="flex-none hidden md:flex">
-            <ul className="w-full h-full gap-5 flex items-center justify-center">
+            <ul className="w-full h-full gap-5 flex items-center justify-center ">
               {/* Navbar menu content here */}
 
               <li className="w-full  flex items-center  justify-start gap-5 bg-muted">
                 <RoutesToolbar />
               </li>
-
-              <ThemeToggle />
+              <li className="w-full  flex items-center  justify-start gap-3 pr-5">
+                <ThemeToggle />
+                <LuLogOut
+                  className="hover:text-accent h-5 w-5"
+                  onClick={logOut}
+                />
+              </li>
             </ul>
           </div>
         </div>
@@ -71,9 +79,12 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
         {children}
       </div>
-      <div className="drawer-side">
+      <div className="drawer-side ">
         <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
-        <ul className="flex flex-col  h-full bg-base-200 gap-2 justify-start items-center">
+        <ul
+          className="flex flex-col  h-full bg-base-200 gap-2
+        justify-start items-center bg-secondary/30"
+        >
           {/* Sidebar content here */}
 
           <div className="bg-muted border-b-2 flex items-center justify-center p-3">
@@ -87,7 +98,10 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           >
             <RoutesToolbar />
           </li>
-          <ThemeToggle />
+          <li className="w-full  flex flex-col items-center  justify-start gap-3 pr-5">
+            <ThemeToggle />
+            <LuLogOut className="hover:text-accent h-5 w-5" onClick={logOut} />
+          </li>
         </ul>
       </div>
     </div>

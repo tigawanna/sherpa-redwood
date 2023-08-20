@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { toast } from 'react-toastify'
 import { useForm } from 'react-hook-form'
 import { SocialLogin } from './SocialLogin'
 import { useAuth } from 'src/auth'
 import { Link } from '@redwoodjs/router'
 import { LuLoader } from 'react-icons/lu'
+import { toast } from '@redwoodjs/web/dist/toast'
 
 
 interface SignupFormProps {}
@@ -31,25 +31,17 @@ export function SignupForm({}: SignupFormProps) {
 
   function submitForm({avatar_url,email,name,password}: TFormValues) {
   signUp({
-  email,
-  password,
-  options: {
-    data: {
-      name,
-      avatar_url
+    email,
+    password,
+    options: {
+      data: {
+        name,
+        avatar_url,
+      },
     },
-  },
-})
-  .then(() => {
-    toast('Account created successfully', {
-      type: 'success',
-    })
   })
-  .catch((error) => {
-    toast(error.message, {
-      type: 'error',
-    })
-  })
+    .then(() => toast.success('Signed up successfully'))
+    .catch((error) => toast.error(error.message))
   }
 
   return (

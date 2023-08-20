@@ -1,6 +1,6 @@
+import { toast } from '@redwoodjs/web/dist/toast'
 import { FaGithub } from 'react-icons/fa'
 import { LuLoader } from 'react-icons/lu'
-import { toast } from 'react-toastify'
 import { useAuth } from 'src/auth'
 
 interface GithubOauthProps {}
@@ -14,8 +14,8 @@ const { logIn,loading,error } = useAuth()
     return logIn({
       authMethod: 'oauth',
       provider: 'github',
-    }).then(() => toast('Logged in successfully', { type: 'success' }))
-      .catch((error) => toast(error.message, { type: 'error' }))
+    }).then(() => toast.success('Logged in successfully'))
+      .catch((error) => toast.error(error.message))
   }
 
   return (
