@@ -7199,6 +7199,7 @@ __metadata:
     "@redwoodjs/api": 6.1.0
     "@redwoodjs/auth-supabase-api": 6.1.0
     "@redwoodjs/graphql-server": 6.1.0
+    jose: ^4.14.4
   languageName: unknown
   linkType: soft
 
@@ -14555,7 +14556,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jose@npm:^4.11.4":
+"jose@npm:^4.11.4, jose@npm:^4.14.4":
   version: 4.14.4
   resolution: "jose@npm:4.14.4"
   checksum: cb13d70f2336c0a45210f8e4e71ed8d4d82a884ad66776308f5ab9a90e2087419782e0b288d2a9070657620637f0d2dbcac6f3164ed9ba8903c0096e282cec3c

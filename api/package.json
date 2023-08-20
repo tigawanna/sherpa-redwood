@@ -5,6 +5,7 @@
   "dependencies": {
     "@redwoodjs/api": "6.1.0",
     "@redwoodjs/auth-supabase-api": "6.1.0",
-    "@redwoodjs/graphql-server": "6.1.0"
+    "@redwoodjs/graphql-server": "6.1.0",
+    "jose": "^4.14.4"
   }
 }

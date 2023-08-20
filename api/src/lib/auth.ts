@@ -29,9 +29,7 @@ type RedwoodUser = Record<string, unknown> & { roles?: string[] }
  *   context information about the invocation such as IP Address
  * @returns RedwoodUser
  */
-export const getCurrentUser = async (
-  decoded: Decoded
-): Promise<RedwoodUser | null> => {
+export const getCurrentUser = async (decoded: Decoded): Promise<RedwoodUser | null> => {
   if (!decoded) {
     return null
   }
@@ -123,4 +121,12 @@ export const requireAuth = ({ roles }: { roles?: AllowedRoles } = {}) => {
   if (roles && !hasRole(roles)) {
     throw new ForbiddenError("You don't have access to do that.")
   }
+}
+
+export const authDecoder = async (token: string, type: string) => {
+  // decode token...
+  if (type !== 'custom-auth') {
+    return null
+  }
+  return token
 }

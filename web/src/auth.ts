@@ -81,20 +81,24 @@ try {
 
 
 
-function pbGetUser(){
-return pb.authStore.model as unknown as PBUser
+async function pbGetUser(){
+// return pb.authStore.model as unknown as PBUser
+ return  {
+      "id":pb.authStore.model.id,
+      "aud": "authenticated",
+      "role": "authenticated",
+      "roles": ["admin"],
+      "email":pb.authStore.model.email,
+     "app_metadata": pb.authStore.model,
+     "user_metadata":pb.authStore.model,
+     "created_at":pb.authStore.model.created,
+     "updated_at":pb.authStore.model.updated
+   }
+
 }
 
 
-// export interface AuthClient {
-//   pb_client: typeof pb,
-//   login: (data: Parameters<typeof pbSignIn>[0]) => ReturnType<typeof pbSignIn>
-//   oauthLogin: () => ReturnType<typeof pbOauthLogin>
-//   logout: () => void
-//   signup: (data:Parameters<typeof pbSignUp>[0]) => ReturnType<typeof pbSignUp>
-//   getToken: () => string
-//   getUserMetadata: () => ReturnType<typeof pbGetUser>| null
-// }
+
 
 export type SignInWithOAuthOptions = Parameters<typeof pbOauthLogin>[0] & {
   authMethod: 'oauth'
@@ -113,7 +117,7 @@ export interface ValidateResetTokenResponse {
 }
 
 // Replace this with the auth service provider client sdk
-const client = {
+const client_config = {
   pb_client:pb,
   login: async (creds:SignInWithPasswordOptions|SignInWithOAuthOptions) => {
     if(creds.authMethod==="password"){
@@ -131,10 +135,7 @@ const client = {
 }
 
 function createAuth() {
-  const authImplementation = createAuthImplementation(client)
-
-  // You can pass custom provider hooks here if you need to as a second
-  // argument. See the Redwood framework source code for how that's used
+  const authImplementation = createAuthImplementation(client_config)
   return createAuthentication(authImplementation)
 }
 
@@ -142,7 +143,7 @@ function createAuth() {
 // the shape of this object (i.e. keep all the key names) but change all the
 // values/functions to use methods from the auth service provider client sdk
 // you're integrating with
-function createAuthImplementation(client) {
+function createAuthImplementation(client:typeof client_config) {
   return {
     type: 'custom-auth',
     client,
@@ -150,7 +151,8 @@ function createAuthImplementation(client) {
     logout: async () => client.logout(),
     signup: async (data: PBUserAuthFields) => client.signup(data),
     getToken: async () => client.getToken(),
-    getUserMetadata: async () => client.getUserMetadata(),
+    getUserMetadata: () => client.getUserMetadata(),
+
   }
 }
 
