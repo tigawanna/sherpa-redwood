@@ -57,25 +57,23 @@ async function pbSignIn(data: Pick<PBUserAuthFields, 'email' | 'password'>) {
 );
 }
 
-async function pbOauthLogin(){
+
+async function pbOauthLogin({ provider, scopes }: { provider: string; scopes: string[]; }) {
 try {
     const authData = await pb
       .collection("devs")
       .authWithOAuth2<PBUser>({
-        provider: "github",
-        scopes: ["user", "repo",],
+        provider,
+        scopes,
       });
-    //console.log("pocketbase github user  === ", authData);
     if (authData?.meta?.accessToken) {
-      //console.log("pocketbase github user  === ", authData?.meta?.accessToken);
-      await pb.collection("devs").update<PBUser>(authData.record.id, {
+    await pb.collection("devs").update<PBUser>(authData.record.id, {
         access_token: authData?.meta.accessToken,
         avatar: authData?.meta.avatarUrl ?? authData.record.avatar,
       });
     }
     return pb.authStore.model as unknown as PBUser;
   } catch (error) {
-    //console.log("error getting pocketbase github user ==== ", error);
     throw error;
   }
 }
@@ -88,40 +86,44 @@ return pb.authStore.model as unknown as PBUser
 }
 
 
-export interface AuthClient {
-  pb_client: typeof pb,
-  login: (data: Parameters<typeof pbSignIn>[0]) => ReturnType<typeof pbSignIn>
-  oauthLogin: () => ReturnType<typeof pbOauthLogin>
-  logout: () => void
-  signup: (data:Parameters<typeof pbSignUp>[0]) => ReturnType<typeof pbSignUp>
-  getToken: () => string
-  getUserMetadata: () => ReturnType<typeof pbGetUser>| null
-}
-
-// If you're integrating with an auth service provider you should delete this interface.
-// This type should be inferred from the general interface above.
-
-// interface User {
-//   // The name of the id variable will vary depending on what auth service
-//   // provider you're integrating with. Another common name is `sub`
-//   id: string
-//   email?: string
-//   username?: string
-//   roles: string[]
+// export interface AuthClient {
+//   pb_client: typeof pb,
+//   login: (data: Parameters<typeof pbSignIn>[0]) => ReturnType<typeof pbSignIn>
+//   oauthLogin: () => ReturnType<typeof pbOauthLogin>
+//   logout: () => void
+//   signup: (data:Parameters<typeof pbSignUp>[0]) => ReturnType<typeof pbSignUp>
+//   getToken: () => string
+//   getUserMetadata: () => ReturnType<typeof pbGetUser>| null
 // }
 
-// If you're integrating with an auth service provider you should delete this interface
-// This type should be inferred from the general interface above
+export type SignInWithOAuthOptions = Parameters<typeof pbOauthLogin>[0] & {
+  authMethod: 'oauth'
+}
+
+
+
+export type SignInWithPasswordOptions = Parameters<typeof pbSignIn>[0] & {
+  authMethod: 'password'
+}
+
+
 export interface ValidateResetTokenResponse {
   error?: string
   [key: string]: string | undefined
 }
 
 // Replace this with the auth service provider client sdk
-const client:AuthClient = {
+const client = {
   pb_client:pb,
-  login: async (data: Pick<PBUserAuthFields, 'email' | 'password'>) => await pbSignIn(data),
-  oauthLogin: async () => await pbOauthLogin(),
+  login: async (creds:SignInWithPasswordOptions|SignInWithOAuthOptions) => {
+    if(creds.authMethod==="password"){
+      return await pbSignIn(creds)
+    }
+    if(creds.authMethod==="oauth"){
+      return await pbOauthLogin(creds)
+    }
+  },
+
   signup: async(data:PBUserAuthFields) => await pbSignUp(data),
   logout: () => pb.authStore.clear(),
   getToken: () => pb.authStore.token,
@@ -140,16 +142,14 @@ function createAuth() {
 // the shape of this object (i.e. keep all the key names) but change all the
 // values/functions to use methods from the auth service provider client sdk
 // you're integrating with
-function createAuthImplementation(client: AuthClient) {
+function createAuthImplementation(client) {
   return {
     type: 'custom-auth',
     client,
-    login: async (data: Pick<PBUserAuthFields, 'email' | 'password'>) => client.login(data),
-    oauthLogin: async () => client.oauthLogin(),
+    login: async (creds: SignInWithPasswordOptions | SignInWithOAuthOptions) => client.login(creds),
     logout: async () => client.logout(),
     signup: async (data: PBUserAuthFields) => client.signup(data),
     getToken: async () => client.getToken(),
-
     getUserMetadata: async () => client.getUserMetadata(),
   }
 }

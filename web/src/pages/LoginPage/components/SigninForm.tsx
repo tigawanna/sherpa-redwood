@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { toast } from 'react-toastify'
 import { useForm } from 'react-hook-form'
 import { useAuth } from 'src/auth'
 import { LuLoader } from 'react-icons/lu'
 import { Link } from '@redwoodjs/router'
 import { SocialLogin } from './SocialLogin'
+import { toast } from '@redwoodjs/web/dist/toast'
 
 interface SigninFormProps {}
 
@@ -25,19 +25,12 @@ export function SigninForm({}: SigninFormProps) {
 
   function submitForm(data: TFormValues) {
     logIn({
+      authMethod: 'password',
       email: data.email,
       password: data.password,
     })
-      .then(() => {
-        toast('Logged in successfully', {
-          type: 'success',
-        })
-      })
-      .catch((error) => {
-        toast(error.message, {
-          type: 'error',
-        })
-      })
+      .then(() => toast.success('Logged in successfully'))
+      .catch((error) => toast.error(error.message))
   }
 
   return (
