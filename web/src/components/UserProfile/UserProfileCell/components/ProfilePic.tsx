@@ -22,26 +22,32 @@ function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
   setFileImage&&setFileImage(input_pic)
 }
   return (
-    <div className="w-full h-full">
+    <div className="md:min-w-[200px] bg-accent/20 flex flex-col items-center justify-center">
       {typeof pic === 'string' && pic.length > 0 ? (
         <div className="avatar" onClick={() => ref.current?.click()}>
-          <div className=" rounded md:w-[40%]">
+          <div className=" rounded ">
             <img
-            className='tounded-lg'
-            src={pic} height={"300"} width={"400"}/>
+              className="max-w-md"
+              src={pic}
+              height={'300'}
+              width={'400'}
+            />
           </div>
         </div>
-      ) : null }
+      ) : null}
 
-        <div className='w-full h-full'>
-          <input type="file" ref={ref} className="hidden"
-          onChange={(e) => handleChange(e)}/>
-          <BiImageAdd
-            onClick={() => ref.current?.click()}
-            className="h-7 w-7"
-          ></BiImageAdd>
-        </div>
-
+      <div className="flex flex-col items-center justify-center">
+        <input
+          type="file"
+          ref={ref}
+          className="hidden"
+          onChange={(e) => handleChange(e)}
+        />
+        <BiImageAdd
+          onClick={() => ref.current?.click()}
+          className="h-7 w-7"
+        ></BiImageAdd>
+      </div>
     </div>
   )
 }
