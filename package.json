@@ -8,7 +8,8 @@
   },
   "scripts": {
     "reval": " tsx ./scripts/custom/revalidate-sdls.ts",
-    "map": " tsx ./scripts/custom/multi-cmd.ts"
+    "map": " tsx ./scripts/custom/multi-cmd.ts",
+    "restart":"npx kill-port 8910 && rw dev"
   },
   "devDependencies": {
     "@redwoodjs/auth-supabase-setup": "6.1.0",
