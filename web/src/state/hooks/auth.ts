@@ -1,26 +1,11 @@
 import { useAuth } from 'src/auth'
-import { useState } from 'react'
-export function useCurrentUser() {
-  const [user, setUser] = useState<UseCurrentUser|null>(null)
-  const [error, setError] = useState(null)
-  const [loading, setLoading] = useState(true)
-  useAuth()
-    .getCurrentUser()
-    .then((user) => {
-      setLoading(false)
-      setUser(user as any)
-    })
-    .catch((error) => {
-      setLoading(false)
-      setUser(null)
-      setError(error)
 
-    })
-    .finally(() => {
-      setLoading(false)
-    })
-    return { data:user, error, loading }
+export function useCurrentUser() {
+  return useAuth().currentUser as unknown as UseCurrentUser
+
 }
+
+
 
 
 export interface UseCurrentUser {

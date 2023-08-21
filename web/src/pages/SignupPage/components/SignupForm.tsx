@@ -10,7 +10,7 @@ import { SocialLogin } from 'src/pages/LoginPage/components/SocialLogin'
 interface SignupFormProps {}
 
 export function SignupForm({}: SignupFormProps) {
-  const { signUp, loading, error } = useAuth()
+  const { signUp, loading, error,client } = useAuth()
   const defaultValues = {
     email: '',
     password: '',
@@ -27,6 +27,8 @@ export function SignupForm({}: SignupFormProps) {
   } = useForm({ defaultValues })
   const [showPassword, setShowPassword] = useState(false)
 
+
+
   function submitForm({ avatar_url, email, name, password }: TFormValues) {
     signUp({
       email,
@@ -39,11 +41,15 @@ export function SignupForm({}: SignupFormProps) {
       },
     })
       .then((res) => {
-      if (res.error) {
+  if (res.error) {
             throw res.error
         }
         toast.success('Signed up successfully')
-        navigate(routes.login())
+         logIn({
+           authMethod: 'password',
+           email:email,
+           password:password,
+         })
       })
 
       .catch((error) => toast.error(error.message))
@@ -150,3 +156,7 @@ export function SignupForm({}: SignupFormProps) {
     </div>
   )
 }
+function logIn(arg0: { authMethod: string; email: string; password: string }) {
+  throw new Error('Function not implemented.')
+}
+
