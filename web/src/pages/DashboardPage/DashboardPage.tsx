@@ -9,7 +9,6 @@ interface DashboardPageProps {
 
 export function DashboardPage({}:DashboardPageProps){
 const user = useCurrentUser()
-console.log("dashboard page",user)
 return (
   <div className="w-full h-full flex items-center justify-center">
     <MetaTags title="Dashboard" description="Dashboard page" />

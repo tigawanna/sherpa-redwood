@@ -3,7 +3,7 @@ import type { FindUserProfileById } from 'types/graphql'
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 
 import UserProfile from 'src/components/UserProfile/UserProfile'
-import { ProfileForm } from './components/ProfileForm'
+import { ProfileForm } from '../ProfileForm'
 
 export const QUERY = gql`
   query FindUserProfileById($id: String!) {
@@ -24,15 +24,10 @@ export const QUERY = gql`
 
 export const Loading = () => <div>Loading...</div>
 
-export const Empty = () => (
-  <div className="w-full h-full">
-    UserProfile not found
-    <ProfileForm />
-  </div>
-)
+export const Empty = () => <div>UserProfile not found</div>
 
 export const Failure = ({ error }: CellFailureProps) => (
-  <div className="w-full h-full">
+  <div className="rw-cell-error flex flex-col">
     {error?.message}
     <ProfileForm />
   </div>
