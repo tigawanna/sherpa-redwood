@@ -20,85 +20,11 @@ model Project {
   name        String
   description String
   repoUrl     String
-  Resume      Resume? @relation(fields: [resumeId], references: [id])
-  resumeId    Int?
-}
 
-model Education {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  institute String
-  level     String
-  years     Int
-  Resume    Resume? @relation(fields: [resumeId], references: [id])
-  resumeId  Int?
-}
-
-model JobExperience {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  title       String  @unique
-  description String
-  company     String?
-  location    String?
-  url         String?
-  years       Int
-  Resume      Resume? @relation(fields: [resumeId], references: [id])
-  resumeId    Int?
-}
-
-model JobAppliedTo {
-  id            Int          @id @default(autoincrement())
-  title         String       @unique
-  description   String?
-  company       String?
-  location      String?
-  url           String?
-  createdAt     DateTime     @default(now())
-  updatedAt     DateTime     @updatedAt
-  // resume used
-  resume        Resume       @relation(fields: [resumeId], references: [id])
-  resumeId      Int
-  // user who applied
   UserProfile   UserProfile? @relation(fields: [userProfileId], references: [id])
-  userProfileId Int?
-}
+  userProfileId String?
 
-model Resume {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  name                 String
-  location             String
-  contactEmail         String
-  contactPhone         String
-  summary              String
   programmingLanguages ProgrammingLanguage[]
-  skills               Skill[]
-  experience           JobExperience[]
-  education            Education[]
-  projects             Project[]
-  // Add more fields as needed
-  JobAppliedTo         JobAppliedTo[]
-  UserProfile          UserProfile[]
-}
-
-model Skill {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  name        String
-  description String
-  url         String
-
-  Resume   Resume? @relation(fields: [resumeId], references: [id])
-  resumeId Int?
 }
 
 model ProgrammingLanguage {
@@ -109,8 +35,8 @@ model ProgrammingLanguage {
   name       String
   color      String
   frameworks Framework[]
-  Resume     Resume?     @relation(fields: [resumeId], references: [id])
-  resumeId   Int?
+  Project    Project?    @relation(fields: [projectId], references: [id])
+  projectId  Int?
 }
 
 model Framework {
@@ -125,16 +51,75 @@ model Framework {
   programmingLanguagesId Int?
 }
 
-model UserProfile {
+model Education {
   id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  institute String
+  level     String
+  years     Int
+
+  UserProfile   UserProfile? @relation(fields: [userProfileId], references: [id])
+  userProfileId String?
+}
+
+model Experience {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  title       String  @unique
+  description String
+  company     String?
+  location    String?
+  url         String?
+  years       Int
+
+  UserProfile   UserProfile? @relation(fields: [userProfileId], references: [id])
+  userProfileId String?
+}
+
+model JobAppliedTo {
+  id          Int      @id @default(autoincrement())
+  title       String   @unique
+  description String?
+  company     String?
+  location    String?
+  url         String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  UserProfile   UserProfile? @relation(fields: [userProfileId], references: [id])
+  userProfileId String?
+}
+
+model Skill {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  name        String
+  description String
+  url         String
+
+  UserProfile   UserProfile? @relation(fields: [userProfileId], references: [id])
+  userProfileId String?
+}
+
+model UserProfile {
+  id        String   @id @default(uuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   email     String   @unique
 
-  name         String
-  about_me     String
-  image_url    String
-  JobAppliedTo JobAppliedTo[]
-  resume       Resume         @relation(fields: [resumeId], references: [id])
-  resumeId     Int
+  name      String
+  about_me  String
+  image_url String
+
+  Project       Project[]
+  Education     Education[]
+  JobExperience Experience[]
+  JobAppliedTo  JobAppliedTo[]
+  Skill         Skill[]
 }
