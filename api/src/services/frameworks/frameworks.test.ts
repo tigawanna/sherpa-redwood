@@ -31,13 +31,13 @@ describe('frameworks', () => {
   scenario('creates a framework', async () => {
     const result = await createFramework({
       input: {
-        updatedAt: '2023-08-21T16:11:06.138Z',
+        updatedAt: '2023-08-21T17:51:56.281Z',
         name: 'String',
         description: 'String',
       },
     })
 
-    expect(result.updatedAt).toEqual(new Date('2023-08-21T16:11:06.138Z'))
+    expect(result.updatedAt).toEqual(new Date('2023-08-21T17:51:56.281Z'))
     expect(result.name).toEqual('String')
     expect(result.description).toEqual('String')
   })
@@ -48,10 +48,10 @@ describe('frameworks', () => {
     })) as Framework
     const result = await updateFramework({
       id: original.id,
-      input: { updatedAt: '2023-08-22T16:11:06.139Z' },
+      input: { updatedAt: '2023-08-22T17:51:56.281Z' },
     })
 
-    expect(result.updatedAt).toEqual(new Date('2023-08-22T16:11:06.139Z'))
+    expect(result.updatedAt).toEqual(new Date('2023-08-22T17:51:56.281Z'))
   })
 
   scenario('deletes a framework', async (scenario: StandardScenario) => {

@@ -5,8 +5,8 @@ export const standard = defineScenario<Prisma.UserProfileCreateArgs>({
   userProfile: {
     one: {
       data: {
-        updatedAt: '2023-08-21T16:13:08.011Z',
-        email: 'String278916',
+        updatedAt: '2023-08-21T17:50:39.196Z',
+        email: 'String808202',
         name: 'String',
         about_me: 'String',
         image_url: 'String',
@@ -17,8 +17,8 @@ export const standard = defineScenario<Prisma.UserProfileCreateArgs>({
     },
     two: {
       data: {
-        updatedAt: '2023-08-21T16:13:08.011Z',
-        email: 'String1572338',
+        updatedAt: '2023-08-21T17:50:39.196Z',
+        email: 'String8828834',
         name: 'String',
         about_me: 'String',
         image_url: 'String',

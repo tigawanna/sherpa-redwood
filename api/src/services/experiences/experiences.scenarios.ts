@@ -5,18 +5,18 @@ export const standard = defineScenario<Prisma.ExperienceCreateArgs>({
   experience: {
     one: {
       data: {
-        updatedAt: '2023-08-21T16:11:56.772Z',
-        title: 'String6046949',
+        updatedAt: '2023-08-21T17:52:48.924Z',
+        title: 'String8860974',
         description: 'String',
-        years: 8824317,
+        years: 8234295,
       },
     },
     two: {
       data: {
-        updatedAt: '2023-08-21T16:11:56.772Z',
-        title: 'String9191125',
+        updatedAt: '2023-08-21T17:52:48.924Z',
+        title: 'String1114384',
         description: 'String',
-        years: 9553205,
+        years: 485044,
       },
     },
   },

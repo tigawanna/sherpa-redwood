@@ -1,5 +1,5 @@
 import { MetaTags } from '@redwoodjs/web'
-import UserProfileCell from 'src/components/UserProfileCell'
+import UserProfileCell from 'src/components/UserProfile/UserProfileCell'
 import { useCurrentUser } from 'src/state/hooks/auth'
 
 

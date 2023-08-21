@@ -34,17 +34,17 @@ describe('experiences', () => {
   scenario('creates a experience', async () => {
     const result = await createExperience({
       input: {
-        updatedAt: '2023-08-21T16:11:56.707Z',
-        title: 'String8001949',
+        updatedAt: '2023-08-21T17:52:48.892Z',
+        title: 'String2965253',
         description: 'String',
-        years: 6740130,
+        years: 5393971,
       },
     })
 
-    expect(result.updatedAt).toEqual(new Date('2023-08-21T16:11:56.707Z'))
-    expect(result.title).toEqual('String8001949')
+    expect(result.updatedAt).toEqual(new Date('2023-08-21T17:52:48.892Z'))
+    expect(result.title).toEqual('String2965253')
     expect(result.description).toEqual('String')
-    expect(result.years).toEqual(6740130)
+    expect(result.years).toEqual(5393971)
   })
 
   scenario('updates a experience', async (scenario: StandardScenario) => {
@@ -53,10 +53,10 @@ describe('experiences', () => {
     })) as Experience
     const result = await updateExperience({
       id: original.id,
-      input: { updatedAt: '2023-08-22T16:11:56.708Z' },
+      input: { updatedAt: '2023-08-22T17:52:48.892Z' },
     })
 
-    expect(result.updatedAt).toEqual(new Date('2023-08-22T16:11:56.708Z'))
+    expect(result.updatedAt).toEqual(new Date('2023-08-22T17:52:48.892Z'))
   })
 
   scenario('deletes a experience', async (scenario: StandardScenario) => {

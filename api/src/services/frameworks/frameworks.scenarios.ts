@@ -5,14 +5,14 @@ export const standard = defineScenario<Prisma.FrameworkCreateArgs>({
   framework: {
     one: {
       data: {
-        updatedAt: '2023-08-21T16:11:06.205Z',
+        updatedAt: '2023-08-21T17:51:56.318Z',
         name: 'String',
         description: 'String',
       },
     },
     two: {
       data: {
-        updatedAt: '2023-08-21T16:11:06.205Z',
+        updatedAt: '2023-08-21T17:51:56.318Z',
         name: 'String',
         description: 'String',
       },

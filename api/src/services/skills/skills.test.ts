@@ -25,14 +25,14 @@ describe('skills', () => {
   scenario('creates a skill', async () => {
     const result = await createSkill({
       input: {
-        updatedAt: '2023-08-21T16:12:40.059Z',
+        updatedAt: '2023-08-21T17:53:32.030Z',
         name: 'String',
         description: 'String',
         url: 'String',
       },
     })
 
-    expect(result.updatedAt).toEqual(new Date('2023-08-21T16:12:40.059Z'))
+    expect(result.updatedAt).toEqual(new Date('2023-08-21T17:53:32.030Z'))
     expect(result.name).toEqual('String')
     expect(result.description).toEqual('String')
     expect(result.url).toEqual('String')
@@ -42,10 +42,10 @@ describe('skills', () => {
     const original = (await skill({ id: scenario.skill.one.id })) as Skill
     const result = await updateSkill({
       id: original.id,
-      input: { updatedAt: '2023-08-22T16:12:40.059Z' },
+      input: { updatedAt: '2023-08-22T17:53:32.030Z' },
     })
 
-    expect(result.updatedAt).toEqual(new Date('2023-08-22T16:12:40.059Z'))
+    expect(result.updatedAt).toEqual(new Date('2023-08-22T17:53:32.030Z'))
   })
 
   scenario('deletes a skill', async (scenario: StandardScenario) => {
