@@ -15,7 +15,7 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
       setTimeout(() => {
         // navigate('/dashboard')
         setLoading(false)
-      }, 700)
+      }, 500)
     } else {
       setLoading(false)
     }
@@ -25,7 +25,7 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
     // Show a loading state, such as a spinner
     return (
       <div className="w-full flex items-center justify-center min-h-screen bg-secondary-content/60">
-        <h2 className="text-2xl text-accent">
+        <h2 className="text-xl text-accent">
           Already logged in , Rediretiong...
         </h2>
       </div>

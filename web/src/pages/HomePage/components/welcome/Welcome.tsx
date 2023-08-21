@@ -1,9 +1,11 @@
 import { Link } from '@redwoodjs/router'
 import { Features } from './Features'
 
+
 interface WelcomePageProps {}
 
 export function WelcomeSection({}: WelcomePageProps) {
+
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content text-center">
