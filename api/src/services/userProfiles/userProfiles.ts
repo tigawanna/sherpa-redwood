@@ -43,10 +43,21 @@ export const deleteUserProfile: MutationResolvers['deleteUserProfile'] = ({
 }
 
 export const UserProfile: UserProfileRelationResolvers = {
+  Project: (_obj, { root }) => {
+    return db.userProfile.findUnique({ where: { id: root?.id } }).Project()
+  },
+  Education: (_obj, { root }) => {
+    return db.userProfile.findUnique({ where: { id: root?.id } }).Education()
+  },
+  JobExperience: (_obj, { root }) => {
+    return db.userProfile
+      .findUnique({ where: { id: root?.id } })
+      .JobExperience()
+  },
   JobAppliedTo: (_obj, { root }) => {
     return db.userProfile.findUnique({ where: { id: root?.id } }).JobAppliedTo()
   },
-  resume: (_obj, { root }) => {
-    return db.userProfile.findUnique({ where: { id: root?.id } }).resume()
+  Skill: (_obj, { root }) => {
+    return db.userProfile.findUnique({ where: { id: root?.id } }).Skill()
   },
 }

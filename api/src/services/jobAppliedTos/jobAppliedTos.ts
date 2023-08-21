@@ -43,9 +43,6 @@ export const deleteJobAppliedTo: MutationResolvers['deleteJobAppliedTo'] = ({
 }
 
 export const JobAppliedTo: JobAppliedToRelationResolvers = {
-  resume: (_obj, { root }) => {
-    return db.jobAppliedTo.findUnique({ where: { id: root?.id } }).resume()
-  },
   UserProfile: (_obj, { root }) => {
     return db.jobAppliedTo.findUnique({ where: { id: root?.id } }).UserProfile()
   },

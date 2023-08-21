@@ -5,14 +5,14 @@ export const standard = defineScenario<Prisma.ProgrammingLanguageCreateArgs>({
   programmingLanguage: {
     one: {
       data: {
-        updatedAt: '2023-08-19T11:10:48.646Z',
+        updatedAt: '2023-08-21T16:10:42.774Z',
         name: 'String',
         color: 'String',
       },
     },
     two: {
       data: {
-        updatedAt: '2023-08-19T11:10:48.646Z',
+        updatedAt: '2023-08-21T16:10:42.774Z',
         name: 'String',
         color: 'String',
       },

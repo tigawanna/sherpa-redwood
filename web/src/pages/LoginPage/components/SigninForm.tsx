@@ -29,7 +29,13 @@ export function SigninForm({}: SigninFormProps) {
       email: data.email,
       password: data.password,
     })
-      .then(() => toast.success('Logged in successfully'))
+      .then((res) => {
+        console.log("login response",res)
+        if(res.error){
+          throw res.error
+        }
+        toast.success('Logged in successfully')
+      })
       .catch((error) => toast.error(error.message))
   }
 
@@ -102,7 +108,7 @@ export function SigninForm({}: SigninFormProps) {
           </button>
 
           <div className="divider text-sm text-info hover:text-info-content h-fit p-0 m-0">
-            <Link to="/auth/signup"> New here? , Create an account </Link>
+            <Link to="/signup"> New here? , Create an account </Link>
           </div>
           {/* socila login */}
           <SocialLogin />

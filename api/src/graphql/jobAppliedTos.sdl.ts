@@ -8,10 +8,8 @@ export const schema = gql`
     url: String
     createdAt: DateTime!
     updatedAt: DateTime!
-    resume: Resume!
-    resumeId: Int!
     UserProfile: UserProfile
-    userProfileId: Int
+    userProfileId: String
   }
 
   type Query {
@@ -25,8 +23,7 @@ export const schema = gql`
     company: String
     location: String
     url: String
-    resumeId: Int!
-    userProfileId: Int
+    userProfileId: String
   }
 
   input UpdateJobAppliedToInput {
@@ -35,8 +32,7 @@ export const schema = gql`
     company: String
     location: String
     url: String
-    resumeId: Int
-    userProfileId: Int
+    userProfileId: String
   }
 
   type Mutation {

@@ -6,8 +6,9 @@ export const schema = gql`
     name: String!
     description: String!
     repoUrl: String!
-    Resume: Resume
-    resumeId: Int
+    UserProfile: UserProfile
+    userProfileId: String
+    programmingLanguages: [ProgrammingLanguage]!
   }
 
   type Query {
@@ -19,14 +20,14 @@ export const schema = gql`
     name: String!
     description: String!
     repoUrl: String!
-    resumeId: Int
+    userProfileId: String
   }
 
   input UpdateProjectInput {
     name: String
     description: String
     repoUrl: String
-    resumeId: Int
+    userProfileId: String
   }
 
   type Mutation {

@@ -117,6 +117,10 @@ model UserProfile {
   about_me  String
   image_url String
 
+  country String
+  city    String
+  phone   String
+
   Project       Project[]
   Education     Education[]
   JobExperience Experience[]

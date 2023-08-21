@@ -6,8 +6,8 @@ export const schema = gql`
     name: String!
     description: String!
     url: String!
-    Resume: Resume
-    resumeId: Int
+    UserProfile: UserProfile
+    userProfileId: String
   }
 
   type Query {
@@ -19,14 +19,14 @@ export const schema = gql`
     name: String!
     description: String!
     url: String!
-    resumeId: Int
+    userProfileId: String
   }
 
   input UpdateSkillInput {
     name: String
     description: String
     url: String
-    resumeId: Int
+    userProfileId: String
   }
 
   type Mutation {

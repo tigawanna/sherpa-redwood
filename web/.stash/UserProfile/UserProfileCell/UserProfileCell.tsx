@@ -5,7 +5,7 @@ import { ProfileContatiner } from './components/ProfileContatiner'
 import { ProfileForm } from './components/ProfileForm'
 
 export const QUERY = gql`
-  query FindUserProfileById($id: Int!) {
+  query FindUserProfileById($id: String!) {
     userProfile: userProfile(id: $id) {
       id
       createdAt
@@ -14,7 +14,9 @@ export const QUERY = gql`
       name
       about_me
       image_url
-      resumeId
+      country
+      city
+      phone
     }
   }
 `

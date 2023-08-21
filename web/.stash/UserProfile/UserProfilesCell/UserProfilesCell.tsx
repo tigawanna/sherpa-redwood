@@ -15,7 +15,9 @@ export const QUERY = gql`
       name
       about_me
       image_url
-      resumeId
+      country
+      city
+      phone
     }
   }
 `

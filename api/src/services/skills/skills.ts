@@ -39,7 +39,7 @@ export const deleteSkill: MutationResolvers['deleteSkill'] = ({ id }) => {
 }
 
 export const Skill: SkillRelationResolvers = {
-  Resume: (_obj, { root }) => {
-    return db.skill.findUnique({ where: { id: root?.id } }).Resume()
+  UserProfile: (_obj, { root }) => {
+    return db.skill.findUnique({ where: { id: root?.id } }).UserProfile()
   },
 }

@@ -6,8 +6,8 @@ export const schema = gql`
     name: String!
     color: String!
     frameworks: [Framework]!
-    Resume: Resume
-    resumeId: Int
+    Project: Project
+    projectId: Int
   }
 
   type Query {
@@ -18,13 +18,13 @@ export const schema = gql`
   input CreateProgrammingLanguageInput {
     name: String!
     color: String!
-    resumeId: Int
+    projectId: Int
   }
 
   input UpdateProgrammingLanguageInput {
     name: String
     color: String
-    resumeId: Int
+    projectId: Int
   }
 
   type Mutation {

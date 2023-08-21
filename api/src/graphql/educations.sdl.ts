@@ -6,8 +6,8 @@ export const schema = gql`
     institute: String!
     level: String!
     years: Int!
-    Resume: Resume
-    resumeId: Int
+    UserProfile: UserProfile
+    userProfileId: String
   }
 
   type Query {
@@ -19,14 +19,14 @@ export const schema = gql`
     institute: String!
     level: String!
     years: Int!
-    resumeId: Int
+    userProfileId: String
   }
 
   input UpdateEducationInput {
     institute: String
     level: String
     years: Int
-    resumeId: Int
+    userProfileId: String
   }
 
   type Mutation {

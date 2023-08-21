@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { SocialLogin } from './SocialLogin'
+
 import { useAuth } from 'src/auth'
-import { Link } from '@redwoodjs/router'
+import { Link, navigate, routes } from '@redwoodjs/router'
 import { LuLoader } from 'react-icons/lu'
 import { toast } from '@redwoodjs/web/dist/toast'
-
+import { SocialLogin } from 'src/pages/LoginPage/components/SocialLogin'
 
 interface SignupFormProps {}
 
@@ -17,7 +17,6 @@ export function SignupForm({}: SignupFormProps) {
     confirmPassword: '',
     avatar_url: '',
     name: '',
-
   }
   type TFormValues = typeof defaultValues
   const {
@@ -28,20 +27,26 @@ export function SignupForm({}: SignupFormProps) {
   } = useForm({ defaultValues })
   const [showPassword, setShowPassword] = useState(false)
 
-
-  function submitForm({avatar_url,email,name,password}: TFormValues) {
-  signUp({
-    email,
-    password,
-    options: {
-      data: {
-        name,
-        avatar_url,
+  function submitForm({ avatar_url, email, name, password }: TFormValues) {
+    signUp({
+      email,
+      password,
+      options: {
+        data: {
+          name,
+          avatar_url,
+        },
       },
-    },
-  })
-    .then(() => toast.success('Signed up successfully'))
-    .catch((error) => toast.error(error.message))
+    })
+      .then((res) => {
+      if (res.error) {
+            throw res.error
+        }
+        toast.success('Signed up successfully')
+        navigate(routes.login())
+      })
+
+      .catch((error) => toast.error(error.message))
   }
 
   return (
@@ -137,7 +142,7 @@ export function SignupForm({}: SignupFormProps) {
           </button>
 
           <div className="divider text-sm text-info hover:text-info-content h-fit p-0 m-0 ">
-            <Link to="/auth">Already have an account? </Link>
+            <Link to="/login">Already have an account? </Link>
           </div>
           <SocialLogin />
         </form>

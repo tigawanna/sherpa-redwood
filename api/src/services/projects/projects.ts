@@ -41,7 +41,12 @@ export const deleteProject: MutationResolvers['deleteProject'] = ({ id }) => {
 }
 
 export const Project: ProjectRelationResolvers = {
-  Resume: (_obj, { root }) => {
-    return db.project.findUnique({ where: { id: root?.id } }).Resume()
+  UserProfile: (_obj, { root }) => {
+    return db.project.findUnique({ where: { id: root?.id } }).UserProfile()
+  },
+  programmingLanguages: (_obj, { root }) => {
+    return db.project
+      .findUnique({ where: { id: root?.id } })
+      .programmingLanguages()
   },
 }

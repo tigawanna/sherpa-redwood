@@ -1,20 +1,25 @@
 export const schema = gql`
   type UserProfile {
-    id: Int!
+    id: String!
     createdAt: DateTime!
     updatedAt: DateTime!
     email: String!
     name: String!
     about_me: String!
     image_url: String!
+    country: String!
+    city: String!
+    phone: String!
+    Project: [Project]!
+    Education: [Education]!
+    JobExperience: [Experience]!
     JobAppliedTo: [JobAppliedTo]!
-    resume: Resume!
-    resumeId: Int!
+    Skill: [Skill]!
   }
 
   type Query {
     userProfiles: [UserProfile!]! @requireAuth
-    userProfile(id: Int!): UserProfile @requireAuth
+    userProfile(id: String!): UserProfile @requireAuth
   }
 
   input CreateUserProfileInput {
@@ -22,7 +27,9 @@ export const schema = gql`
     name: String!
     about_me: String!
     image_url: String!
-    resumeId: Int!
+    country: String!
+    city: String!
+    phone: String!
   }
 
   input UpdateUserProfileInput {
@@ -30,13 +37,17 @@ export const schema = gql`
     name: String
     about_me: String
     image_url: String
-    resumeId: Int
+    country: String
+    city: String
+    phone: String
   }
 
   type Mutation {
     createUserProfile(input: CreateUserProfileInput!): UserProfile! @requireAuth
-    updateUserProfile(id: Int!, input: UpdateUserProfileInput!): UserProfile!
-      @requireAuth
-    deleteUserProfile(id: Int!): UserProfile! @requireAuth
+    updateUserProfile(
+      id: String!
+      input: UpdateUserProfileInput!
+    ): UserProfile! @requireAuth
+    deleteUserProfile(id: String!): UserProfile! @requireAuth
   }
 `

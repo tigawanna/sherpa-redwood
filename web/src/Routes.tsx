@@ -32,8 +32,9 @@ const Routes = () => {
         </Set>
       </Private>
 
-      <Set  wrap={AuthLayout} >
-       <Route path="/login" page={LoginPage} name="login" />
+      <Set wrap={AuthLayout}>
+        <Route path="/login" page={LoginPage} name="login" />
+        <Route path="/signup" page={SignupPage} name="signup" />
       </Set>
 
       <Route notfound page={NotFoundPage} />

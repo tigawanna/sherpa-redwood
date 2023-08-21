@@ -31,17 +31,17 @@ describe('educations', () => {
   scenario('creates a education', async () => {
     const result = await createEducation({
       input: {
-        updatedAt: '2023-08-19T11:08:54.306Z',
+        updatedAt: '2023-08-21T16:11:32.750Z',
         institute: 'String',
         level: 'String',
-        years: 3181009,
+        years: 6865908,
       },
     })
 
-    expect(result.updatedAt).toEqual(new Date('2023-08-19T11:08:54.306Z'))
+    expect(result.updatedAt).toEqual(new Date('2023-08-21T16:11:32.750Z'))
     expect(result.institute).toEqual('String')
     expect(result.level).toEqual('String')
-    expect(result.years).toEqual(3181009)
+    expect(result.years).toEqual(6865908)
   })
 
   scenario('updates a education', async (scenario: StandardScenario) => {
@@ -50,10 +50,10 @@ describe('educations', () => {
     })) as Education
     const result = await updateEducation({
       id: original.id,
-      input: { updatedAt: '2023-08-20T11:08:54.307Z' },
+      input: { updatedAt: '2023-08-22T16:11:32.751Z' },
     })
 
-    expect(result.updatedAt).toEqual(new Date('2023-08-20T11:08:54.307Z'))
+    expect(result.updatedAt).toEqual(new Date('2023-08-22T16:11:32.751Z'))
   })
 
   scenario('deletes a education', async (scenario: StandardScenario) => {

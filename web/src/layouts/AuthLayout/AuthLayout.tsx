@@ -7,6 +7,7 @@ type AuthLayoutProps = {
 }
 const AuthLayout = ({ children }: AuthLayoutProps) => {
   const { isAuthenticated } = useAuth()
+  console.log("auth layout== ",isAuthenticated)
   const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {

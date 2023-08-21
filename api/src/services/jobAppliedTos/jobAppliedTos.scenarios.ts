@@ -4,36 +4,10 @@ import type { ScenarioData } from '@redwoodjs/testing/api'
 export const standard = defineScenario<Prisma.JobAppliedToCreateArgs>({
   jobAppliedTo: {
     one: {
-      data: {
-        title: 'String226808',
-        updatedAt: '2023-08-19T11:09:43.969Z',
-        resume: {
-          create: {
-            updatedAt: '2023-08-19T11:09:43.969Z',
-            name: 'String',
-            location: 'String',
-            contactEmail: 'String',
-            contactPhone: 'String',
-            summary: 'String',
-          },
-        },
-      },
+      data: { title: 'String1744538', updatedAt: '2023-08-21T16:12:15.934Z' },
     },
     two: {
-      data: {
-        title: 'String7612987',
-        updatedAt: '2023-08-19T11:09:43.969Z',
-        resume: {
-          create: {
-            updatedAt: '2023-08-19T11:09:43.969Z',
-            name: 'String',
-            location: 'String',
-            contactEmail: 'String',
-            contactPhone: 'String',
-            summary: 'String',
-          },
-        },
-      },
+      data: { title: 'String1686590', updatedAt: '2023-08-21T16:12:15.934Z' },
     },
   },
 })

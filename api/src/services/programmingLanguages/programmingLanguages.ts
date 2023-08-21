@@ -47,9 +47,9 @@ export const ProgrammingLanguage: ProgrammingLanguageRelationResolvers = {
       .findUnique({ where: { id: root?.id } })
       .frameworks()
   },
-  Resume: (_obj, { root }) => {
+  Project: (_obj, { root }) => {
     return db.programmingLanguage
       .findUnique({ where: { id: root?.id } })
-      .Resume()
+      .Project()
   },
 }

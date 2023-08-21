@@ -11,7 +11,7 @@ import type {
 } from 'types/graphql'
 
 const DELETE_USER_PROFILE_MUTATION = gql`
-  mutation DeleteUserProfileMutation($id: Int!) {
+  mutation DeleteUserProfileMutation($id: String!) {
     deleteUserProfile(id: $id) {
       id
     }

@@ -5,18 +5,18 @@ export const standard = defineScenario<Prisma.EducationCreateArgs>({
   education: {
     one: {
       data: {
-        updatedAt: '2023-08-19T11:08:54.429Z',
+        updatedAt: '2023-08-21T16:11:32.811Z',
         institute: 'String',
         level: 'String',
-        years: 2747548,
+        years: 1776921,
       },
     },
     two: {
       data: {
-        updatedAt: '2023-08-19T11:08:54.429Z',
+        updatedAt: '2023-08-21T16:11:32.811Z',
         institute: 'String',
         level: 'String',
-        years: 1479550,
+        years: 2439048,
       },
     },
   },

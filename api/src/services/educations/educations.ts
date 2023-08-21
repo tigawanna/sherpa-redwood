@@ -43,7 +43,7 @@ export const deleteEducation: MutationResolvers['deleteEducation'] = ({
 }
 
 export const Education: EducationRelationResolvers = {
-  Resume: (_obj, { root }) => {
-    return db.education.findUnique({ where: { id: root?.id } }).Resume()
+  UserProfile: (_obj, { root }) => {
+    return db.education.findUnique({ where: { id: root?.id } }).UserProfile()
   },
 }
