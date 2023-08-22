@@ -16,7 +16,7 @@ const {error,handleChange,input,setError,setInput,validateInputs} =  useFormHook
     id: user?.email,
     createdAt: "",
     updatedAt: "",
-    email: "",
+    email:user?.email,
     name: "",
     image_url: "",
     country: "",

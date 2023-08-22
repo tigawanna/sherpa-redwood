@@ -2,23 +2,27 @@ import { useFormHook } from "src/state/hooks/form";
 import { ProfilePic } from "./ProfilePic";
 import { EditUserProfileById } from "types/graphql";
 import { useState } from "react";
+import { useCurrentUser } from "src/state/hooks/auth";
 
 interface ProfileFormProps {
 
 }
 type FormUserProfile = NonNullable<EditUserProfileById['userProfile']>
 export function ProfileForm({}:ProfileFormProps){
+  const user = useCurrentUser()
 const {error,handleChange,input,setError,setInput,validateInputs} =  useFormHook<FormUserProfile>({
   initialValues:{
-  about_me: "",
-  id: 0,
-  createdAt: "",
-  updatedAt: "",
-  email: "",
-  name: "",
-  image_url: "",
-  resumeId: 0
-}
+    about_me: "",
+    id: user?.email,
+    createdAt: "",
+    updatedAt: "",
+    email:user?.email,
+    name: "",
+    image_url: "",
+    country: "",
+    city: "",
+    phone: ""
+  }
 })
 const [file,setFile] = useState<File>(null)
 const text_fields:Array<keyof FormUserProfile>=["email","name"]
@@ -83,7 +87,7 @@ return (
         </div>
       </div>
 
-      
+
 
       <div>
         <label></label>
