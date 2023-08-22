@@ -3,13 +3,14 @@ import { ProfilePic } from "./ProfilePic";
 import { EditUserProfileById } from "types/graphql";
 import { useState } from "react";
 import { useCurrentUser } from "src/state/hooks/auth";
+import { TheCountrySelect } from "./TheCountrySelect";
 
 interface ProfileFormProps {
 
 }
 type FormUserProfile = NonNullable<EditUserProfileById['userProfile']>
 export function ProfileForm({}:ProfileFormProps){
-  const user = useCurrentUser()
+const user = useCurrentUser()
 const {error,handleChange,input,setError,setInput,validateInputs} =  useFormHook<FormUserProfile>({
   initialValues:{
     about_me: "",
@@ -48,7 +49,7 @@ return (
                   key={field}
                   className="w-full flex flex-col justify-center"
                 >
-                  <label htmlFor={field} className="text-sm font-serif">
+                  <label htmlFor={field} className="text-sm font-serif font-bold px-2">
                     {field}
                   </label>
                   <input
@@ -70,7 +71,7 @@ return (
                   key={field}
                   className="w-full flex flex-col justify-center"
                 >
-                  <label htmlFor={field} className="text-sm font-serif">
+                  <label htmlFor={field} className="text-sm font-serif font-bold px-2">
                     {field}
                   </label>
                   <textarea
@@ -84,6 +85,18 @@ return (
               )
             })}
           </div>
+          <TheCountrySelect
+          form_options={{
+            field_name:"country",
+            default_value:"kenya",
+            editing:true
+          }}
+          setInput={(value)=>setInput((prev)=> {
+            return {
+              ...prev,
+              country:value.item
+            }
+          })}/>
         </div>
       </div>
 
