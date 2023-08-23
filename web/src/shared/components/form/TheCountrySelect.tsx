@@ -1,5 +1,7 @@
 import { useHandRolledQuery } from 'src/shared/hooks/useHandRolledQuery'
-import { Country, FormOptions, SetInput } from './types'
+import {FormOptions, SetInput } from './types'
+import { getCountries, getCurrentCountry } from 'src/shared/utils/location/location'
+import { Country } from 'src/shared/utils/location/types'
 
 interface TheCountrySelectProps {
   setInput: (props: SetInput) => void
@@ -26,7 +28,11 @@ export function TheCountrySelect({
     },
 
   })
-
+  const query = useHandRolledQuery<Awaited<ReturnType<typeof getCurrentCountry>>>({
+    queryKey: ['country'],
+    queryFn: getCurrentCountry,
+  })
+console.log("current country == ",query.data)
   const handleChange = (e: any) => {
     const { value } = e.target
     setKeyword({ ...keyword, [e.target.id]: value })
@@ -104,13 +110,3 @@ export function TheCountrySelect({
   )
 }
 
-const getCountries = async () => {
-  return fetch('https://restcountries.com/v3.1/all').then((response) =>
-    response.json().then((data: Country[]) => data.filter((item) => {
-      // console.log("functio === ",keyword, item.name.common)
-      // return item.name.common.toLowerCase().includes(keyword.toLowerCase())
-        return item
-
-    }))
-  )
-}

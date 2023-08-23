@@ -54,6 +54,6 @@ export function useHandRolledQuery<T = unknown>({
     }
   }, [memoizedQueryFn])
 
-  const data = select(response.data)
+  const data = select?select(response.data):response.data
   return { ...response, data }
 }
