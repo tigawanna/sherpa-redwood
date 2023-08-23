@@ -4,11 +4,13 @@ interface HandRolledQueryProps<T> {
   queryFn: () => Promise<T>
   queryKey: string[]
   select?: (data: T) => T
+  enabled?:boolean
 }
 export function useHandRolledQuery<T = unknown>({
-  queryKey,
+  queryKey=[],
   queryFn,
   select,
+  enabled=true
 }: HandRolledQueryProps<T>) {
   const [response, setResponse] = useState<{
     data: T
@@ -46,8 +48,9 @@ export function useHandRolledQuery<T = unknown>({
         }
       }
     }
-
-    fetchData()
+if(enabled){
+  fetchData()
+}
 
     return () => {
       isMounted = false

@@ -28,9 +28,12 @@ export function TheCountrySelect({
     },
 
   })
-  const query = useHandRolledQuery<Awaited<ReturnType<typeof getCurrentCountry>>>({
+  const country_query = useHandRolledQuery<
+    Awaited<ReturnType<typeof getCurrentCountry>>
+  >({
     queryKey: ['country'],
     queryFn: getCurrentCountry,
+    enabled:keyword.word.length>3,
   })
 
   const handleChange = (e: any) => {
