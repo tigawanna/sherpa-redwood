@@ -32,7 +32,7 @@ export function TheCountrySelect({
     queryKey: ['country'],
     queryFn: getCurrentCountry,
   })
-console.log("current country == ",query.data)
+
   const handleChange = (e: any) => {
     const { value } = e.target
     setKeyword({ ...keyword, [e.target.id]: value })
